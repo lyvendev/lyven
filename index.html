@@ -108,6 +108,57 @@
             0%, 100% { opacity: 0.1; }
             50% { opacity: 0.8; }
         }
+        /* Section Expériences - centrée et bien alignée */
+#experiences {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0;
+  text-align: center;
+}
+
+#experiences .skills-section {
+  max-width: 1200px;
+  width: 90%;
+}
+
+#experiences .experience-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+#experiences .experience-card {
+  flex: 1 1 250px;
+  max-width: 280px;
+}
+
+@media (max-width: 768px) {
+  #experiences .experience-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  #experiences .experience-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .experiences {
+    left: 50%;
+    transform: translateX(-50%);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
 
         .moon {
             position: fixed;
@@ -541,4 +592,3 @@
 </script>
 </body>
 </html>
-

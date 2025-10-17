@@ -4,369 +4,427 @@
   <link rel="icon" type="image/webp" href="./lyven.webp">
 
   <!-- Open Graph (Facebook, Discord, LinkedIn, etc.) -->
-  <meta property="og:title" content="Lyven.dev" />
-  <meta property="og:description" content="Créateur de serveurs Discord, administrateur et modérateur" />
-  <meta property="og:image" content="https://lyven.pages.dev/lyven.webp" />
-  <meta property="og:url" content="https://lyven.pages.dev" />
-  <meta property="og:type" content="website" />
+<meta property="og:title" content="Lyven.dev" />
+<meta property="og:description" content="Créateur de serveur discord & french administrator & modérator" />
+<meta property="og:image" content="https://lyven.pages.dev/lyven.webp" />
+<meta property="og:url" content="https://lyven.pages.dev" />
+<meta property="og:type" content="website" />
 
-  <!-- Twitter Card (aperçu sur Twitter/X) -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Lyven : French administrator & moderator" />
-  <meta name="twitter:description" content="Créateur de serveurs Discord, administrateur et modérateur" />
-  <meta name="twitter:image" content="https://lyven.pages.dev/lyven.webp" />
-  <meta name="twitter:site" content="@lyven_pro" />
+<!-- Twitter Card (aperçu sur Twitter/X) -->
+<meta name="twitter:card" content="Lyven" />
+<meta name="twitter:title" content="Lyven : French administrator & moderator" />
+<meta name="twitter:description" content="Je suis créateur de serveur discord & administrateur et modérateur dans certains serveur" />
+<meta name="twitter:image" content="https://lyven.pages.dev/lyven.webp" />
+<meta name="twitter:site" content="@lyven_pro" />
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>lyven.dev - Créateur Discord & Développeur</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lyven.dev - Créateur Discord & Développeur</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #000000;
-      color: #ffffff;
-      overflow-x: hidden;
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
 
-    /* --- Barre de navigation --- */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(10, 10, 10, 0.85);
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      padding: 20px 0;
-      z-index: 100;
-      border-bottom: 1px solid rgba(88, 101, 242, 0.3);
-    }
+        /* --- Barre de navigation --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(88, 101, 242, 0.3);
+        }
 
-    .navbar a {
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.1em;
-      transition: color 0.3s;
-    }
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
 
-    .navbar a:hover {
-      color: #5865F2;
-    }
+        .navbar a:hover {
+            color: #5865F2;
+        }
 
-    .background, .noise, .stars, .moon {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            z-index: -2;
+        }
 
-    .background { background: #000000; z-index: -2; }
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.02;
+            z-index: -1;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
 
-    .noise {
-      opacity: 0.02;
-      z-index: -1;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
 
-    .stars {
-      z-index: -1;
-    }
+        .star {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: twinkle 5s infinite ease-in-out;
+        }
 
-    .star {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      background: #ffffff;
-      border-radius: 50%;
-      animation: twinkle 5s infinite ease-in-out;
-    }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.8; }
+        }
+        /* Section Expériences - centrée et bien alignée */
+#experiences {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0;
+  text-align: center;
+}
 
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.1; }
-      50% { opacity: 0.8; }
-    }
+#experiences .skills-section {
+  max-width: 1200px;
+  width: 90%;
+}
 
-    .moon {
-      top: 8%;
-      right: 10%;
-      width: 130px;
-      height: 130px;
-      background: radial-gradient(circle at 35% 35%, #e0e0e0, #a0a0a0 50%, #707070);
-      border-radius: 50%;
-      box-shadow: 0 0 60px rgba(200, 200, 200, 0.25);
-      z-index: 0;
-      animation: floatMoon 10s ease-in-out infinite;
-    }
+#experiences .experience-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
 
-    @keyframes floatMoon {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
+#experiences .experience-card {
+  flex: 1 1 250px;
+  max-width: 280px;
+}
 
-    .container {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 120px 20px 40px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .profile-card {
-      background: rgba(20, 20, 20, 0.4);
-      border: 1px solid rgba(60, 60, 60, 0.3);
-      border-radius: 30px;
-      padding: 60px 50px;
-      text-align: center;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
-      animation: fadeInScale 1s ease;
-      max-width: 600px;
-      width: 100%;
-    }
-
-    @keyframes fadeInScale {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .profile-image-wrapper {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 30px;
-    }
-
-    .profile-image {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      border: 3px solid #5865F2;
-      box-shadow: 0 0 30px rgba(88, 101, 242, 0.4);
-      animation: profilePulse 4s infinite;
-      object-fit: cover;
-    }
-
-    @keyframes profilePulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(88, 101, 242, 0.4); }
-      50% { transform: scale(1.03); box-shadow: 0 0 40px rgba(88, 101, 242, 0.5); }
-    }
-
-    <div class="status-badge">
-  <img src="https://cdn.jsdelivr.net/gh/discord/icons@main/dnd.svg" alt="DND" class="dnd-logo">
-</div>
-
-<style>
-.status-badge {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 2px solid #0a0a0a;
-    background: rgba(0,0,0,0); /* fond transparent pour voir le logo */
-    display: flex;
+@media (max-width: 768px) {
+  #experiences .experience-grid {
+    flex-direction: column;
     align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  #experiences .experience-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .experiences {
+    left: 50%;
+    transform: translateX(-50%);
+    flex-wrap: wrap;
     justify-content: center;
-    animation: statusPulse 2.5s infinite;
+  }
 }
 
-.status-badge .dnd-logo {
-    width: 70%;
-    height: 70%;
-}
+        .moon {
+            position: fixed;
+            top: 8%;
+            right: 10%;
+            width: 130px;
+            height: 130px;
+            background: radial-gradient(circle at 35% 35%, #e0e0e0, #a0a0a0 50%, #707070);
+            border-radius: 50%;
+            box-shadow: 0 0 60px rgba(200, 200, 200, 0.25);
+            z-index: 0;
+            animation: floatMoon 10s ease-in-out infinite;
+        }
 
-@keyframes statusPulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.6); }
-    50% { box-shadow: 0 0 0 8px rgba(255, 0, 0, 0); }
-}
-</style>
+        @keyframes floatMoon {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
 
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 40px;
+            position: relative;
+            z-index: 1;
+        }
 
+        .profile-card {
+            background: rgba(20, 20, 20, 0.4);
+            border: 1px solid rgba(60, 60, 60, 0.3);
+            border-radius: 30px;
+            padding: 60px 50px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+            animation: fadeInScale 1s ease;
+            max-width: 600px;
+            width: 100%;
+        }
 
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
 
+        .profile-image-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
 
+        .profile-image {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 3px solid #5865F2;
+            box-shadow: 0 0 30px rgba(88, 101, 242, 0.4);
+            animation: profilePulse 4s infinite;
+            object-fit: cover;
+        }
 
-    h1 {
-      font-size: 3.5em;
-      font-weight: 700;
-      margin-bottom: 15px;
-      color: #ffffff;
-      letter-spacing: -1px;
-      text-shadow: 0 0 20px rgba(88, 101, 242, 0.3);
-    }
+        @keyframes profilePulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(88, 101, 242, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 0 40px rgba(88, 101, 242, 0.5); }
+        }
 
-    .subtitle {
-      font-size: 1.15em;
-      color: #808080;
-      margin-bottom: 35px;
-      font-weight: 300;
-    }
+        .status-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            background: #43B581;
+            border: 4px solid #0a0a0a;
+            border-radius: 50%;
+            animation: statusPulse 2.5s infinite;
+        }
 
-    .badges {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      margin-bottom: 35px;
-      flex-wrap: wrap;
-    }
+        @keyframes statusPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(67, 181, 129, 0.6); }
+            50% { box-shadow: 0 0 0 8px rgba(67, 181, 129, 0); }
+        }
 
-    .badge-icon {
-      width: 36px;
-      height: 36px;
-      background: rgba(88, 101, 242, 0.15);
-      border: 1px solid rgba(88, 101, 242, 0.3);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s;
-      cursor: pointer;
-      color: #5865F2;
-    }
+        h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ffffff;
+            letter-spacing: -1px;
+            text-shadow: 0 0 20px rgba(88, 101, 242, 0.3);
+        }
 
-    .badge-icon:hover {
-      transform: translateY(-5px);
-      background: rgba(88, 101, 242, 0.25);
-      box-shadow: 0 10px 20px rgba(88, 101, 242, 0.3);
-    }
+        .subtitle {
+            font-size: 1.15em;
+            color: #808080;
+            margin-bottom: 35px;
+            font-weight: 300;
+        }
 
-    .social-links {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-    }
+        .badges {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
 
-    .social-link {
-      width: 55px;
-      height: 55px;
-      background: rgba(30, 30, 30, 0.6);
-      border: 1px solid rgba(80, 80, 80, 0.3);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: #999999;
-      font-size: 1.3em;
-      transition: all 0.4s;
-      position: relative;
-    }
+        .badge-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(88, 101, 242, 0.15);
+            border: 1px solid rgba(88, 101, 242, 0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            color: #5865F2;
+        }
 
-    .social-link:hover {
-      transform: translateY(-8px) rotate(360deg);
-      border-color: #5865F2;
-      background: rgba(88, 101, 242, 0.2);
-      color: #5865F2;
-      box-shadow: 0 10px 25px rgba(88, 101, 242, 0.3);
-    }
+        .badge-icon:hover {
+            transform: translateY(-5px);
+            background: rgba(88, 101, 242, 0.25);
+            box-shadow: 0 10px 20px rgba(88, 101, 242, 0.3);
+        }
 
-    .skills-section { margin-top: 80px; width: 100%; max-width: 1200px; }
-    .section-title { text-align: center; font-size: 2.5em; font-weight: 700; margin-bottom: 50px; color: #ffffff; text-shadow: 0 0 20px rgba(88, 101, 242, 0.2); }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
 
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      padding: 0 20px;
-    }
+        .social-link {
+            width: 55px;
+            height: 55px;
+            background: rgba(30, 30, 30, 0.6);
+            border: 1px solid rgba(80, 80, 80, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #999999;
+            font-size: 1.3em;
+            transition: all 0.4s;
+            position: relative;
+        }
 
-    .skill-card {
-      background: rgba(20, 20, 20, 0.4);
-      border: 1px solid rgba(60, 60, 60, 0.3);
-      border-radius: 25px;
-      padding: 40px 30px;
-      text-align: center;
-      backdrop-filter: blur(10px);
-      transition: all 0.4s;
-      position: relative;
-    }
+        .social-link:hover {
+            transform: translateY(-8px) rotate(360deg);
+            border-color: #5865F2;
+            background: rgba(88, 101, 242, 0.2);
+            color: #5865F2;
+            box-shadow: 0 10px 25px rgba(88, 101, 242, 0.3);
+        }
 
-    .skill-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(88, 101, 242, 0.4);
-      box-shadow: 0 15px 40px rgba(88, 101, 242, 0.2);
-      background: rgba(30, 30, 30, 0.5);
-    }
+        .skills-section {
+            margin-top: 80px;
+            width: 100%;
+            max-width: 1200px;
+        }
 
-    .skill-icon-wrapper {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 25px;
-      background: rgba(88, 101, 242, 0.15);
-      border: 1px solid rgba(88, 101, 242, 0.3);
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.2em;
-      color: #5865F2;
-      animation: iconFloat 3s ease-in-out infinite;
-    }
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(88, 101, 242, 0.2);
+        }
 
-    @keyframes iconFloat {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-    }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
 
-    .skill-card:nth-child(2) .skill-icon-wrapper { animation-delay: 0.5s; }
-    .skill-card:nth-child(3) .skill-icon-wrapper { animation-delay: 1s; }
-    .skill-card:nth-child(4) .skill-icon-wrapper { animation-delay: 1.5s; }
+        .skill-card {
+            background: rgba(20, 20, 20, 0.4);
+            border: 1px solid rgba(60, 60, 60, 0.3);
+            border-radius: 25px;
+            padding: 40px 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s;
+            position: relative;
+        }
 
-    .skill-title { font-size: 1.5em; font-weight: 600; margin-bottom: 15px; color: #ffffff; }
-    .skill-description { color: #808080; line-height: 1.6; font-size: 0.95em; }
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(88, 101, 242, 0.4);
+            box-shadow: 0 15px 40px rgba(88, 101, 242, 0.2);
+            background: rgba(30, 30, 30, 0.5);
+        }
 
-    @media (max-width: 768px) {
-      .profile-card { padding: 40px 30px; }
-      h1 { font-size: 2.5em; }
-      .skills-grid { grid-template-columns: 1fr; }
-    }
+        .skill-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: rgba(88, 101, 242, 0.15);
+            border: 1px solid rgba(88, 101, 242, 0.3);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2em;
+            color: #5865F2;
+            animation: iconFloat 3s ease-in-out infinite;
+        }
 
-    /* --- Section expériences --- */
-    #experiences { padding: 100px 0; }
-    .experience-group { margin-bottom: 80px; }
-    .experience-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-      padding: 0 30px;
-    }
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
 
-    .experience-card {
-      background: rgba(20, 20, 20, 0.4);
-      border: 1px solid rgba(60, 60, 60, 0.3);
-      border-radius: 25px;
-      padding: 30px;
-      text-align: center;
-      backdrop-filter: blur(10px);
-      transition: all 0.4s;
-    }
+        .skill-card:nth-child(2) .skill-icon-wrapper { animation-delay: 0.5s; }
+        .skill-card:nth-child(3) .skill-icon-wrapper { animation-delay: 1s; }
+        .skill-card:nth-child(4) .skill-icon-wrapper { animation-delay: 1.5s; }
 
-    .experience-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(88, 101, 242, 0.4);
-      box-shadow: 0 15px 40px rgba(88, 101, 242, 0.2);
-    }
+        .skill-title { font-size: 1.5em; font-weight: 600; margin-bottom: 15px; color: #ffffff; }
+        .skill-description { color: #808080; line-height: 1.6; font-size: 0.95em; }
 
-    .experience-card h3 { color: #ffffff; font-size: 1.4em; margin-bottom: 10px; }
-    .experience-card p { color: #808080; font-size: 0.95em; line-height: 1.4; margin-bottom: 8px; }
-    .experience-card a { color: #5865F2; text-decoration: none; font-weight: 500; }
-  </style>
+        @media (max-width: 768px) {
+            .profile-card { padding: 40px 30px; }
+            h1 { font-size: 2.5em; }
+            .skills-grid { grid-template-columns: 1fr; }
+        }
+
+        /* --- Section expériences --- */
+        #experiences {
+            padding: 100px 0;
+        }
+
+        .experience-group { margin-bottom: 80px; }
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            padding: 0 30px;
+        }
+
+        .experience-card {
+            background: rgba(20, 20, 20, 0.4);
+            border: 1px solid rgba(60, 60, 60, 0.3);
+            border-radius: 25px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(88, 101, 242, 0.4);
+            box-shadow: 0 15px 40px rgba(88, 101, 242, 0.2);
+        }
+
+        .experience-card h3 { color: #ffffff; font-size: 1.4em; margin-bottom: 10px; }
+        .experience-card p { color: #808080; font-size: 0.95em; line-height: 1.4; margin-bottom: 8px; }
+        .experience-card a { color: #5865F2; text-decoration: none; font-weight: 500; }
+    </style>
 </head>
 <body>
 <div class="background"></div>
@@ -395,14 +453,7 @@
     </div>
     <div class="social-links">
       <a href="https://discord.gg/tZW5NHuCGN" class="social-link"><i class="fab fa-discord"></i></a>
-
-      <!-- Logo X (anciennement Twitter) remplacé par SVG officiel blanc -->
-      <a href="https://x.com/lyven_pro" class="social-link" aria-label="Profil X">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" width="24" height="24" fill="currentColor">
-          <path d="M714.163 519.284L1160.89 0H1060.53L667.137 450.887L361.637 0H0L468.686 681.821L0 1226.37H100.365L516.97 744.407L838.363 1226.37H1200L714.137 519.284H714.163ZM568.291 680.693L522.877 615.689L136.013 79.6395H311.182L610.615 511.993L656.029 576.997L1063.19 1146.73H888.022L568.291 680.693Z"/>
-        </svg>
-      </a>
-
+      <a href="https://x.com/lyven_pro" class="social-link"><i class="fab fa-twitter"></i></a>
       <a href="https://open.spotify.com/user/31kowiptn5wq6urijwnvzvf3el5a?si=0c198f79498f4e14&nd=1&dlsi=3f1449d1ec0b45db" class="social-link"><i class="fab fa-spotify"></i></a>
     </div>
   </div>
@@ -443,7 +494,7 @@
     <div class="experience-group">
       <h3 style="text-align:center; margin-bottom: 30px;">Expériences actuelles</h3>
       <div class="experience-grid">
-        <div class="experience-card">
+      <div class="experience-card">
           <h3>ADMINISTRATEUR</h3>
           <p>Flow Cut</p>
           <a href="https://discord.gg/AKXVkVdzKA">Serveur discord</a>
@@ -451,7 +502,7 @@
         <div class="experience-card">
           <h3>RESPONSABLE</h3>
           <p>Staizix's Family</p>
-          <a href="https://discord.gg/J4dm8TdFPq">Serveur discord</a>
+         <a href="https://discord.gg/J4dm8TdFPq">Serveur discord</a>
         </div>
         <div class="experience-card">
           <h3>MODÉRATEUR</h3>
@@ -541,9 +592,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-

@@ -3,14 +3,14 @@
 <head>
   <link rel="icon" type="image/webp" href="./lyven.webp">
 
-  <!-- Open Graph (Facebook, Discord, LinkedIn, etc.) -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Lyven.dev" />
   <meta property="og:description" content="Créateur de serveur discord & french administrator & modérator" />
   <meta property="og:image" content="https://lyven.pages.dev/lyven.webp" />
   <meta property="og:url" content="https://lyven.pages.dev" />
   <meta property="og:type" content="website" />
 
-  <!-- Twitter Card (aperçu sur Twitter/X) -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="Lyven" />
   <meta name="twitter:title" content="Lyven : French administrator & moderator" />
   <meta name="twitter:description" content="Je suis créateur de serveur discord & administrateur et modérateur dans certains serveur" />
@@ -33,7 +33,6 @@
       overflow-x: hidden;
     }
 
-    /* --- Barre de navigation --- */
     .navbar {
       position: fixed;
       top: 0;
@@ -56,10 +55,9 @@
       font-size: 1.1em;
       transition: color 0.3s;
     }
-
     .navbar a:hover { color: #5865F2; }
 
-    /* --- Background --- */
+    /* Background */
     .background {
       position: fixed;
       top: 0;
@@ -103,25 +101,6 @@
     @keyframes twinkle {
       0%, 100% { opacity: 0.1; }
       50% { opacity: 0.8; }
-    }
-
-    /* Section Expériences - centrée et bien alignée */
-    #experiences {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 100px 0;
-      text-align: center;
-    }
-
-    #experiences .skills-section { max-width: 1200px; width: 90%; }
-    #experiences .experience-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; }
-    #experiences .experience-card { flex: 1 1 250px; max-width: 280px; }
-
-    @media (max-width: 768px) {
-      #experiences .experience-grid { flex-direction: column; align-items: center; }
     }
 
     .moon {
@@ -258,7 +237,7 @@
       box-shadow: 0 10px 25px rgba(88, 101, 242, 0.3);
     }
 
-    /* --- Section compétences et expériences --- */
+    /* Section compétences et expériences */
     .skills-section { margin-top: 80px; width: 100%; max-width: 1200px; }
     .section-title {
       text-align: center;
@@ -321,10 +300,37 @@
     .skill-title { font-size: 1.5em; font-weight: 600; margin-bottom: 15px; color: #ffffff; }
     .skill-description { color: #808080; line-height: 1.6; font-size: 0.95em; }
 
+    /* Section expérience */
+    .experience-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .experience-card {
+      background: rgba(20, 20, 20, 0.4);
+      border: 1px solid rgba(60, 60, 60, 0.3);
+      border-radius: 25px;
+      padding: 30px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      transition: all 0.4s;
+      min-width: 220px;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(88, 101, 242, 0.4);
+      box-shadow: 0 15px 40px rgba(88, 101, 242, 0.2);
+      background: rgba(30, 30, 30, 0.5);
+    }
+
     @media (max-width: 768px) {
       .profile-card { padding: 40px 30px; }
       h1 { font-size: 2.5em; }
       .skills-grid { grid-template-columns: 1fr; }
+      .experience-grid { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
@@ -392,6 +398,7 @@
   <div id="experiences">
     <div class="skills-section">
       <h2 class="section-title">Expériences</h2>
+
       <!-- Expériences actuelles -->
       <div class="experience-group">
         <h3 style="text-align:center; margin-bottom: 30px;">Expériences actuelles</h3>
@@ -453,7 +460,6 @@
   </div>
 
   <script>
-    // Génération des étoiles
     const starsContainer = document.getElementById('stars');
     const starCount = 200;
     for (let i = 0; i < starCount; i++) {
@@ -467,7 +473,6 @@
       starsContainer.appendChild(star);
     }
 
-    // Parallaxe
     document.addEventListener('mousemove', (e) => {
       const moon = document.querySelector('.moon');
       const cards = document.querySelectorAll('.skill-card');
@@ -480,7 +485,6 @@
       });
     });
 
-    // Animation apparition scroll
     const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; }});

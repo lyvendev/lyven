@@ -173,15 +173,16 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background-color: #2f3136; /* fond sombre pour le logo */
+    background-color: #2f3136; /* fond sombre */
     display: flex;
     align-items: center;
     justify-content: center;
     animation: statusPulse 2.5s infinite;
     border: 2px solid #0a0a0a; /* contour optionnel */
+    overflow: hidden;
 }
 
-.status-badge::after {
+.status-badge::before {
     content: '';
     width: 16px;
     height: 16px;
@@ -537,6 +538,7 @@
 </script>
 </body>
 </html>
+
 
 
 

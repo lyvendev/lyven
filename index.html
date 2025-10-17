@@ -182,19 +182,16 @@
     overflow: hidden;
 }
 
-.status-badge::before {
-    content: '';
+.status-badge .dnd-logo {
     width: 16px;
     height: 16px;
-    background: url('https://cdn.jsdelivr.net/gh/discord/icons@main/dnd.svg') no-repeat center center;
-    background-size: contain;
-    display: block;
 }
 
 @keyframes statusPulse {
     0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.6); }
     50% { box-shadow: 0 0 0 8px rgba(220, 38, 38, 0); }
 }
+
 
 
 
@@ -538,6 +535,7 @@
 </script>
 </body>
 </html>
+
 
 
 

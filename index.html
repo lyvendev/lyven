@@ -1,604 +1,310 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <link rel="icon" type="image/webp" href="./lyven.webp">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lyven.dev | Portfolio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      margin: 0;
+      background: #000;
+      background-size: cover;
+      background-position: center;
+      transition: background 1s ease;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
 
-  <!-- Open Graph (Facebook, Discord, LinkedIn, etc.) -->
-<meta property="og:title" content="Lyven.dev" />
-<meta property="og:description" content="Créateur de serveur discord & french administrator & modérator" />
-<meta property="og:image" content="https://lyven.pages.dev/lyven.webp" />
-<meta property="og:url" content="https://lyven.pages.dev" />
-<meta property="og:type" content="website" />
+    .change-bg {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(88, 101, 242, 0.9);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    .change-bg:hover {
+      background: #6c72ff;
+      box-shadow: 0 0 20px rgba(88, 101, 242, 0.7);
+      transform: scale(1.05);
+    }
 
-<!-- Twitter Card (aperçu sur Twitter/X) -->
-<meta name="twitter:card" content="Lyven" />
-<meta name="twitter:title" content="Lyven : French administrator & moderator" />
-<meta name="twitter:description" content="Je suis créateur de serveur discord & administrateur et modérateur dans certains serveur" />
-<meta name="twitter:image" content="https://lyven.pages.dev/lyven.webp" />
-<meta name="twitter:site" content="@lyven_pro" />
+    .card {
+      background: rgba(20, 20, 35, 0.8);
+      backdrop-filter: blur(15px);
+      border-radius: 25px;
+      box-shadow: 0 0 25px rgba(120, 120, 255, 0.15);
+      text-align: center;
+      padding: 40px;
+      width: 380px;
+      transition: all 0.6s ease;
+      position: absolute;
+    }
+    .hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(40px);
+    }
+    .visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lyven.dev - Créateur Discord & Développeur</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    .profile-container {
+      position: relative;
+      display: inline-block;
+    }
+    .glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(88, 101, 242, 0.6), transparent 70%);
+      filter: blur(30px);
+      z-index: 0;
+      animation: pulse 3s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.9; transform: translate(-50%, -50%) scale(1.1); }
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    img.profile {
+      position: relative;
+      z-index: 1;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #5865f2;
+      box-shadow: 0 0 25px rgba(80, 90, 255, 0.4);
+    }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #000000;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
+    h1 {
+      font-size: 2rem;
+      margin: 15px 0 5px;
+    }
+    p {
+      color: #b6b6ff;
+      font-size: 0.95rem;
+      margin-bottom: 25px;
+    }
 
-        /* --- Barre de navigation --- */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            padding: 20px 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(88, 101, 242, 0.3);
-        }
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    .socials a {
+      background: rgba(22, 22, 40, 0.8);
+      color: #a8aaff;
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+    .socials a:hover {
+      background: #5865f2;
+      color: #fff;
+      transform: scale(1.15);
+      box-shadow: 0 0 15px rgba(88, 101, 242, 0.7);
+    }
 
-        .navbar a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1em;
-            transition: color 0.3s;
-        }
+    .btn, .back-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #5865f2, #7289da);
+      color: #fff;
+      padding: 10px 25px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .btn:hover, .back-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(114,137,218,0.5);
+    }
+    .back-btn {
+      background: rgba(22, 22, 40, 0.8);
+      color: #a8aaff;
+      margin-top: 25px;
+      border: 1px solid #35355f;
+    }
+    .back-btn:hover {
+      background: #5865f2;
+      color: #fff;
+    }
 
-        .navbar a:hover {
-            color: #5865F2;
-        }
+    .experience {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-align: left;
+    }
+    .exp-card {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 15px 20px;
+      border: 1px solid rgba(120, 120, 255, 0.2);
+      box-shadow: 0 0 10px rgba(88,101,242,0.1);
+      transition: all 0.3s ease;
+    }
+    .exp-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      border-color: rgba(88,101,242,0.6);
+      box-shadow: 0 0 20px rgba(88,101,242,0.4);
+      background: rgba(88, 101, 242, 0.1);
+    }
+    .exp-card img {
+      width: 55px;
+      height: 55px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 2px solid #5865f2;
+    }
+    .exp-info h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+    .exp-info p {
+      margin: 4px 0 0;
+      color: #c2c2ff;
+      font-size: 0.9rem;
+    }
+  </style>
 
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000000;
-            z-index: -2;
-        }
-
-        .noise {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.02;
-            z-index: -1;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-
-        .stars {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
-
-        .star {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            background: #ffffff;
-            border-radius: 50%;
-            animation: twinkle 5s infinite ease-in-out;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.1; }
-            50% { opacity: 0.8; }
-        }
-        /* Section Expériences - centrée et bien alignée */
-#experiences {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 100px 0;
-  text-align: center;
-}
-
-#experiences .skills-section {
-  max-width: 1200px;
-  width: 90%;
-}
-
-#experiences .experience-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-}
-
-#experiences .experience-card {
-  flex: 1 1 250px;
-  max-width: 280px;
-}
-
-@media (max-width: 768px) {
-  #experiences .experience-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-@media (max-width: 768px) {
-  #experiences .experience-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .experiences {
-    left: 50%;
-    transform: translateX(-50%);
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
-
-        .moon {
-            position: fixed;
-            top: 8%;
-            right: 10%;
-            width: 130px;
-            height: 130px;
-            background: radial-gradient(circle at 35% 35%, #e0e0e0, #a0a0a0 50%, #707070);
-            border-radius: 50%;
-            box-shadow: 0 0 60px rgba(200, 200, 200, 0.25);
-            z-index: 0;
-            animation: floatMoon 10s ease-in-out infinite;
-        }
-
-        @keyframes floatMoon {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .container {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 120px 20px 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .profile-card {
-            background: rgba(20, 20, 20, 0.4);
-            border: 1px solid rgba(60, 60, 60, 0.3);
-            border-radius: 30px;
-            padding: 60px 50px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
-            animation: fadeInScale 1s ease;
-            max-width: 600px;
-            width: 100%;
-        }
-
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .profile-image-wrapper {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 30px;
-        }
-
-        .profile-image {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 3px solid #5865F2;
-            box-shadow: 0 0 30px rgba(88, 101, 242, 0.4);
-            animation: profilePulse 4s infinite;
-            object-fit: cover;
-        }
-
-        @keyframes profilePulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(88, 101, 242, 0.4); }
-            50% { transform: scale(1.03); box-shadow: 0 0 40px rgba(88, 101, 242, 0.5); }
-        }
-
-        .status-badge {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            width: 32px;
-            height: 32px;
-            background: #43B581;
-            border: 4px solid #0a0a0a;
-            border-radius: 50%;
-            animation: statusPulse 2.5s infinite;
-        }
-
-        @keyframes statusPulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(67, 181, 129, 0.6); }
-            50% { box-shadow: 0 0 0 8px rgba(67, 181, 129, 0); }
-        }
-
-        h1 {
-            font-size: 3.5em;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #ffffff;
-            letter-spacing: -1px;
-            text-shadow: 0 0 20px rgba(88, 101, 242, 0.3);
-        }
-
-        .subtitle {
-            font-size: 1.15em;
-            color: #808080;
-            margin-bottom: 35px;
-            font-weight: 300;
-        }
-
-        .badges {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            margin-bottom: 35px;
-            flex-wrap: wrap;
-        }
-
-        .badge-icon {
-            width: 36px;
-            height: 36px;
-            background: rgba(88, 101, 242, 0.15);
-            border: 1px solid rgba(88, 101, 242, 0.3);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            cursor: pointer;
-            color: #5865F2;
-        }
-
-        .badge-icon:hover {
-            transform: translateY(-5px);
-            background: rgba(88, 101, 242, 0.25);
-            box-shadow: 0 10px 20px rgba(88, 101, 242, 0.3);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-
-        .social-link {
-            width: 55px;
-            height: 55px;
-            background: rgba(30, 30, 30, 0.6);
-            border: 1px solid rgba(80, 80, 80, 0.3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: #999999;
-            font-size: 1.3em;
-            transition: all 0.4s;
-            position: relative;
-        }
-
-        .social-link:hover {
-            transform: translateY(-8px) rotate(360deg);
-            border-color: #5865F2;
-            background: rgba(88, 101, 242, 0.2);
-            color: #5865F2;
-            box-shadow: 0 10px 25px rgba(88, 101, 242, 0.3);
-        }
-
-        .skills-section {
-            margin-top: 80px;
-            width: 100%;
-            max-width: 1200px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5em;
-            font-weight: 700;
-            margin-bottom: 50px;
-            color: #ffffff;
-            text-shadow: 0 0 20px rgba(88, 101, 242, 0.2);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            padding: 0 20px;
-        }
-
-        .skill-card {
-            background: rgba(20, 20, 20, 0.4);
-            border: 1px solid rgba(60, 60, 60, 0.3);
-            border-radius: 25px;
-            padding: 40px 30px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s;
-            position: relative;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(88, 101, 242, 0.4);
-            box-shadow: 0 15px 40px rgba(88, 101, 242, 0.2);
-            background: rgba(30, 30, 30, 0.5);
-        }
-
-        .skill-icon-wrapper {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 25px;
-            background: rgba(88, 101, 242, 0.15);
-            border: 1px solid rgba(88, 101, 242, 0.3);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.2em;
-            color: #5865F2;
-            animation: iconFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes iconFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .skill-card:nth-child(2) .skill-icon-wrapper { animation-delay: 0.5s; }
-        .skill-card:nth-child(3) .skill-icon-wrapper { animation-delay: 1s; }
-        .skill-card:nth-child(4) .skill-icon-wrapper { animation-delay: 1.5s; }
-
-        .skill-title { font-size: 1.5em; font-weight: 600; margin-bottom: 15px; color: #ffffff; }
-        .skill-description { color: #808080; line-height: 1.6; font-size: 0.95em; }
-
-        @media (max-width: 768px) {
-            .profile-card { padding: 40px 30px; }
-            h1 { font-size: 2.5em; }
-            .skills-grid { grid-template-columns: 1fr; }
-        }
-
-        /* --- Section expériences --- */
-        #experiences {
-            padding: 100px 0;
-        }
-
-        .experience-group { margin-bottom: 80px; }
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-            padding: 0 30px;
-        }
-
-        .experience-card {
-            background: rgba(20, 20, 20, 0.4);
-            border: 1px solid rgba(60, 60, 60, 0.3);
-            border-radius: 25px;
-            padding: 30px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s;
-        }
-
-        .experience-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(88, 101, 242, 0.4);
-            box-shadow: 0 15px 40px rgba(88, 101, 242, 0.2);
-        }
-
-        .experience-card h3 { color: #ffffff; font-size: 1.4em; margin-bottom: 10px; }
-        .experience-card p { color: #808080; font-size: 0.95em; line-height: 1.4; margin-bottom: 8px; }
-        .experience-card a { color: #5865F2; text-decoration: none; font-weight: 500; }
-    </style>
+  <script src="https://kit.fontawesome.com/a2e0e6d66a.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="background"></div>
-<div class="noise"></div>
-<div class="stars" id="stars"></div>
-<div class="moon"></div>
 
-<div class="navbar">
-  <a href="#top">Accueil</a>
-  <a href="#experiences">Expériences</a>
-</div>
+  <button class="change-bg" id="changeBg">🎨 Changer le fond</button>
 
-<div class="container" id="top">
-  <div class="profile-card">
-    <div class="profile-image-wrapper">
-      <img src="./lyven.webp" alt="Lyven Profile" class="profile-image">
-      <div class="status-badge"></div>
+  <div class="card visible" id="profileCard">
+    <div class="profile-container">
+      <div class="glow"></div>
+      <img class="profile" src="https://i.postimg.cc/Rh0ys0sj/1fca7e3c4223baeb5142f2e254ee8fc0.png" alt="photo de profil">
     </div>
+
     <h1>lyven.dev</h1>
-    <p class="subtitle">Moderator & Admins | Work at @Staizix & others</p>
-    <div class="badges">
-      <div class="badge-icon"><i class="fab fa-discord"></i></div>
-      <div class="badge-icon"><i class="fas fa-check-circle"></i></div>
-      <div class="badge-icon"><i class="fas fa-bug"></i></div>
-      <div class="badge-icon"><i class="fas fa-heart"></i></div>
+    <p>Moderator & Admin | Work at @Staizix & others</p>
+
+    <div class="socials">
+      <a href="#"><i class="fa-brands fa-discord"></i></a>
+      <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-spotify"></i></a>
+      <a href="#"><i class="fa-brands fa-github"></i></a>
     </div>
-    <div class="social-links">
-      <a href="https://discord.gg/tZW5NHuCGN" class="social-link"><i class="fab fa-discord"></i></a>
-      <a href="https://x.com/lyven_pro" class="social-link"><i class="fab fa-twitter"></i></a>
-      <a href="https://open.spotify.com/user/31kowiptn5wq6urijwnvzvf3el5a?si=0c198f79498f4e14&nd=1&dlsi=3f1449d1ec0b45db" class="social-link"><i class="fab fa-spotify"></i></a>
-    </div>
+
+    <a class="btn" id="showExp"><i class="fa-solid fa-briefcase"></i> Expériences</a>
   </div>
 
-  <div class="skills-section">
-    <h2 class="section-title">Ce que je fais</h2>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-icon-wrapper"><i class="fas fa-server"></i></div>
-        <h3 class="skill-title">Serveurs Discord</h3>
-        <p class="skill-description">Création complète et personnalisation de serveurs Discord avec architecture professionnelle, bots sur mesure et systèmes avancés.</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon-wrapper"><i class="fas fa-code"></i></div>
-        <h3 class="skill-title">Développement</h3>
-        <p class="skill-description">Développement de bots Discord, applications web modernes et solutions automatisées pour optimiser vos communautés.</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon-wrapper"><i class="fas fa-crown"></i></div>
-        <h3 class="skill-title">Responsable</h3>
-        <p class="skill-description">Responsable pour Staizix (YouTubeur Fortnite) et plusieurs autres communautés. Gestion d'équipes et stratégies de croissance.</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon-wrapper"><i class="fas fa-shield-alt"></i></div>
-        <h3 class="skill-title">Modération Expert</h3>
-        <p class="skill-description">Modération professionnelle avec systèmes de sécurité avancés, gestion de conflits et création d'environnements sains.</p>
-      </div>
+  <div class="card hidden" id="experienceCard">
+    <h1><i class="fa-solid fa-briefcase"></i> Expériences</h1>
+
+    <div class="experience">
+
+      <!-- Tu peux modifier le lien image (logo) ici : -->
+      <a href="https://example.com" class="exp-card" target="_blank">
+        <img src="https://i.postimg.cc/281s082g/6d583fe93a31484333646963a1d88f1f.png" alt="logo expérience 1">
+        <div class="exp-info">
+          <h3>Admin – @Marius</h3>
+          <p>Gestion de la modération et de la communauté.</p>
+        </div>
+      </a>
+
+      <a href="https://example.com" class="exp-card" target="_blank">
+        <img src="https://i.postimg.cc/VLTGfBgG/1dd80582c0d37a0663d7acdfd5b8a861.webp" alt="logo expérience 2">
+        <div class="exp-info">
+          <h3>Admin – @ElJuGa</h3>
+          <p>Coordination et supervision des équipes.</p>
+        </div>
+      </a>
+
+      <a href="https://example.com" class="exp-card" target="_blank">
+        <img src="https://i.postimg.cc/bwkTzXs2/pdp-staizix2.jpg" alt="logo expérience 3">
+        <div class="exp-info">
+          <h3>Resp – @Staizix</h3>
+          <p>Supervision et gestion du staff.</p>
+        </div>
+      </a>
+
+      <a href="https://example.com" class="exp-card" target="_blank">
+        <img src="https://i.postimg.cc/SxhZYN0N/a-3820a18d533adf5e6965e1a9491a3de3.gif" alt="logo expérience 4">
+        <div class="exp-info">
+          <h3>Mod – @Café Français</h3>
+          <p>Support technique et aide au staff.</p>
+        </div>
+      </a>
+
     </div>
+
+    <div class="back-btn" id="backBtn"><i class="fa-solid fa-arrow-left"></i> Retour</div>
   </div>
-</div>
 
-<!-- Section Expériences -->
-<div id="experiences">
-  <div class="skills-section">
-    <h2 class="section-title">Expériences</h2>
+  <script>
+    const profileCard = document.getElementById("profileCard");
+    const experienceCard = document.getElementById("experienceCard");
+    const showExp = document.getElementById("showExp");
+    const backBtn = document.getElementById("backBtn");
 
-    <!-- Expérience actuelle -->
-    <div class="experience-group">
-      <h3 style="text-align:center; margin-bottom: 30px;">Expériences actuelles</h3>
-      <div class="experience-grid">
-      <div class="experience-card">
-          <h3>ADMINISTRATEUR</h3>
-          <p>Flow Cut</p>
-          <a href="https://discord.gg/AKXVkVdzKA">Serveur discord</a>
-        </div>
-        <div class="experience-card">
-          <h3>ADMINISTRATEUR</h3>
-          <p>El JuGa Family</p>
-          <a href="https://discord.gg/knSSwmnmQ4">Serveur discord</a>
-        </div>
-        <div class="experience-card">
-          <h3>ADMINISTRATEUR</h3>
-            <p>Marius AREA</p>
-          <a href="https://discord.gg/AA5kjgAtXa">Serveur discord</a> 
-        </div>
-        <div class="experience-card">
-          <h3>RESPONSABLE</h3>
-          <p>Staizix's Family</p>
-         <a href="https://discord.gg/J4dm8TdFPq">Serveur discord</a>
-        </div>
-        <div class="experience-card">
-          <h3>MODÉRATEUR</h3>
-          <p>TheCorbeau's Community</p>
-          <a href="https://discord.gg/zxBWMavXTR">Serveur discord</a>
-      </div>
-         <div class="experience-card">
-          <h3>MODÉRATEUR TEST</h3>
-          <p>Café Français</p>
-          <a href="https://discord.gg/france">Serveur discord</a>
-      </div>
-    </div>
-
-    <!-- Expérience ancienne -->
-    <div class="experience-group">
-      <h3 style="text-align:center; margin-bottom: 30px;">Expériences anciennes</h3>
-      <div class="experience-grid">
-        <div class="experience-card">
-          <h3>ADMINISTRATEUR</h3>
-          <p>Restor Gang</p>
-          <a href="https://discord.gg/62hZK5Zb2U">Serveur discord</a>
-        </div>
-        <div class="experience-card">
-          <h3>ADMINISTRATEUR</h3>
-          <p>Seyko</p>
-          <a href="https://discord.gg/HbU5VsN7pC">Serveur discord</a>
-        </div>
-        <div class="experience-card">
-          <h3>RESPONSABLE</h3>
-          <p>Viral Commuity </p>
-          <a href="https://discord.gg/BsX62GbV6z">Serveur discord</a>
-        </div>
-        <div class="experience-card">
-          <h3>MODÉRATEUR</h3>
-          <p>Kirua Zoldik</p>
-          <a href="https://discord.gg/vaEKUtk9yX">Serveur discord</a>
-        </div>
-        <div class="experience-card">
-          <h3>Nezio FAMILY</h3>
-          <a href="https://discord.gg/RjAbSQ4ACr">Serveur discord</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-  // Génération des étoiles
-  const starsContainer = document.getElementById('stars');
-  const starCount = 200;
-  for (let i = 0; i < starCount; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    star.style.left = Math.random() * 100 + '%';
-    star.style.top = Math.random() * 100 + '%';
-    star.style.animationDelay = Math.random() * 5 + 's';
-    star.style.animationDuration = (4 + Math.random() * 4) + 's';
-    if (Math.random() > 0.95) { star.style.width = '2px'; star.style.height = '2px'; }
-    starsContainer.appendChild(star);
-  }
-
-  // Parallaxe
-  document.addEventListener('mousemove', (e) => {
-    const moon = document.querySelector('.moon');
-    const cards = document.querySelectorAll('.skill-card');
-    const x = (e.clientX / window.innerWidth - 0.5) * 15;
-    const y = (e.clientY / window.innerHeight - 0.5) * 15;
-    moon.style.transform = `translate(${x}px, ${y}px)`;
-    cards.forEach((card, index) => {
-      const speed = (index + 1) * 0.3;
-      card.style.transform = `translate(${x * speed * 0.1}px, ${y * speed * 0.1}px)`;
+    showExp.addEventListener("click", () => {
+      profileCard.classList.remove("visible");
+      profileCard.classList.add("hidden");
+      setTimeout(() => {
+        experienceCard.classList.remove("hidden");
+        experienceCard.classList.add("visible");
+      }, 400);
     });
-  });
 
-  // Animation apparition scroll
-  const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; }});
-  }, observerOptions);
-  document.querySelectorAll('.skill-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(50px)';
-    card.style.transition = 'opacity 0.8s, transform 0.8s';
-    observer.observe(card);
-  });
-</script>
+    backBtn.addEventListener("click", () => {
+      experienceCard.classList.remove("visible");
+      experienceCard.classList.add("hidden");
+      setTimeout(() => {
+        profileCard.classList.remove("hidden");
+        profileCard.classList.add("visible");
+      }, 400);
+    });
+
+    const backgrounds = [
+      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34",
+      "https://images.unsplash.com/photo-1505761671935-60b3a7427bad",
+      "https://images.unsplash.com/photo-1491553895911-0055eca6402d",
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+      "https://images.unsplash.com/photo-1486308510493-aa64833634ef",
+      "https://images.unsplash.com/photo-1521295121783-8a321d551ad2"
+    ];
+
+    const changeBgBtn = document.getElementById("changeBg");
+    changeBgBtn.addEventListener("click", () => {
+      const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+      document.body.style.backgroundImage = `url('${randomBg}?auto=format&fit=crop&w=1600&q=80')`;
+    });
+
+    document.body.style.backgroundImage = `url('${backgrounds[0]}?auto=format&fit=crop&w=1600&q=80')`;
+  </script>
 </body>
 </html>
-

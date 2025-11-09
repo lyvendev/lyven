@@ -11,36 +11,13 @@
     }
     body {
       margin: 0;
-      background: #000;
-      background-size: cover;
-      background-position: center;
-      transition: background 1s ease;
+      background: url('https://i.postimg.cc/9f9tpjv3/38458-black-cherry-banner.png') center/cover no-repeat;
       height: 100vh;
       overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
       color: #fff;
-    }
-
-    .change-bg {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: rgba(88, 101, 242, 0.9);
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s;
-      z-index: 1000;
-    }
-    .change-bg:hover {
-      background: #6c72ff;
-      box-shadow: 0 0 20px rgba(88, 101, 242, 0.7);
-      transform: scale(1.05);
     }
 
     .card {
@@ -268,8 +245,6 @@
 </head>
 <body>
 
-  <button class="change-bg" id="changeBg">🎨 Changer le fond</button>
-
   <div class="card visible" id="profileCard">
     <div class="profile-container">
       <div class="glow"></div>
@@ -371,24 +346,6 @@
         profileCard.classList.add("visible");
       }, 400);
     });
-
-    const backgrounds = [
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34",
-      "https://images.unsplash.com/photo-1499856871958-5b9627545d1a",
-      "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f",
-      "https://images.unsplash.com/photo-1509439581779-6298f75bf6e5",
-      "https://images.unsplash.com/photo-1549144511-f099e773c147",
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34"
-    ];
-
-    const changeBgBtn = document.getElementById("changeBg");
-    changeBgBtn.addEventListener("click", () => {
-      const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
-      document.body.style.backgroundImage = `url('${randomBg}?auto=format&fit=crop&w=1600&q=80')`;
-    });
-
-    document.body.style.backgroundImage = `url('${backgrounds[0]}?auto=format&fit=crop&w=1600&q=80')`;
   </script>
 </body>
 </html>
-

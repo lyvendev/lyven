@@ -121,12 +121,46 @@
       padding: 10px;
       font-size: 1.2rem;
       transition: 0.3s;
+      position: relative;
     }
     .socials a:hover {
       background: #5865f2;
       color: #fff;
       transform: scale(1.15);
       box-shadow: 0 0 15px rgba(88, 101, 242, 0.7);
+    }
+    .socials a img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+    .socials a .tooltip {
+      position: absolute;
+      bottom: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      z-index: 100;
+    }
+    .socials a:hover .tooltip {
+      opacity: 1;
+    }
+    .socials a .tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: rgba(0, 0, 0, 0.9);
     }
 
     .btn, .back-btn {
@@ -184,6 +218,14 @@
       border-radius: 12px;
       object-fit: cover;
       border: 2px solid #5865f2;
+      transition: all 0.3s ease;
+    }
+    .exp-card:hover img.cafe-hover {
+      content: url('https://i.postimg.cc/sD4kTY9y/Capture-d-ecran-2025-11-09-233055.png');
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(88,101,242,0.6);
     }
     .exp-info h3 {
       margin: 0;
@@ -216,7 +258,10 @@
       <a href="#"><i class="fa-brands fa-discord"></i></a>
       <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
       <a href="#"><i class="fa-brands fa-spotify"></i></a>
-      <a href="#"><i class="fa-brands fa-github"></i></a>
+      <a href="#">
+        <img src="https://i.postimg.cc/GhP4z55x/Badge-Mod-removebg-preview.png" alt="badge">
+        <span class="tooltip">Café Français</span>
+      </a>
     </div>
 
     <a class="btn" id="showExp"><i class="fa-solid fa-briefcase"></i> Expériences</a>
@@ -227,7 +272,6 @@
 
     <div class="experience">
 
-      <!-- Tu peux modifier le lien image (logo) ici : -->
       <a href="https://example.com" class="exp-card" target="_blank">
         <img src="https://i.postimg.cc/281s082g/6d583fe93a31484333646963a1d88f1f.png" alt="logo expérience 1">
         <div class="exp-info">
@@ -253,7 +297,7 @@
       </a>
 
       <a href="https://example.com" class="exp-card" target="_blank">
-        <img src="https://i.postimg.cc/SxhZYN0N/a-3820a18d533adf5e6965e1a9491a3de3.gif" alt="logo expérience 4">
+        <img class="cafe-hover" src="https://i.postimg.cc/SxhZYN0N/a-3820a18d533adf5e6965e1a9491a3de3.gif" alt="logo expérience 4">
         <div class="exp-info">
           <h3>Mod – @Café Français</h3>
           <p>Support technique et aide au staff.</p>
@@ -291,11 +335,11 @@
 
     const backgrounds = [
       "https://images.unsplash.com/photo-1502602898657-3e91760cbb34",
-      "https://images.unsplash.com/photo-1505761671935-60b3a7427bad",
-      "https://images.unsplash.com/photo-1491553895911-0055eca6402d",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
-      "https://images.unsplash.com/photo-1486308510493-aa64833634ef",
-      "https://images.unsplash.com/photo-1521295121783-8a321d551ad2"
+      "https://images.unsplash.com/photo-1499856871958-5b9627545d1a",
+      "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f",
+      "https://images.unsplash.com/photo-1509439581779-6298f75bf6e5",
+      "https://images.unsplash.com/photo-1549144511-f099e773c147",
+      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34"
     ];
 
     const changeBgBtn = document.getElementById("changeBg");
@@ -308,4 +352,3 @@
   </script>
 </body>
 </html>
-

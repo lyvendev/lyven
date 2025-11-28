@@ -26,7 +26,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background: var(--overlay-color, rgba(0, 0, 0, 0.5));
       z-index: 0;
       transition: background 0.8s ease;
     }
@@ -258,7 +258,7 @@
       width: 420px;
       transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
-      z-index: 1;
+      z-index: 10;
       border: 1px solid rgba(255, 255, 255, 0.3);
       color: #fff;
       margin: 0 auto;
@@ -451,6 +451,8 @@
       border: 2px solid rgba(255, 255, 255, 0.3);
       cursor: pointer;
       font-size: 0.95rem;
+      z-index: 100;
+      position: relative;
     }
     .btn:hover, .back-btn:hover {
       transform: translateY(-2px);
@@ -810,6 +812,35 @@
         profileCard.classList.add("visible");
       }, 400);
     });
+
+    // Scroll gradient effect
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      // Calculate scroll percentage
+      const scrollPercent = scrollPosition / (documentHeight - windowHeight);
+      
+      if (scrollPercent < 0.3) {
+        // Top section - gray overlay
+        document.body.style.setProperty('--overlay-color', 'rgba(0, 0, 0, 0.5)');
+      } else if (scrollPercent > 0.7) {
+        // Bottom section - purple overlay
+        document.body.style.setProperty('--overlay-color', 'rgba(50, 20, 80, 0.7)');
+      } else {
+        // Transition zone
+        const transitionPercent = (scrollPercent - 0.3) / 0.4;
+        const r = Math.floor(0 + (50 - 0) * transitionPercent);
+        const g = Math.floor(0 + (20 - 0) * transitionPercent);
+        const b = Math.floor(0 + (80 - 0) * transitionPercent);
+        const a = 0.5 + (0.2 * transitionPercent);
+        document.body.style.setProperty('--overlay-color', `rgba(${r}, ${g}, ${b}, ${a})`);
+      }
+    });
+
+    // Initialize CSS variable
+    document.body.style.setProperty('--overlay-color', 'rgba(0, 0, 0, 0.5)');
   </script>
 </body>
 </html>
